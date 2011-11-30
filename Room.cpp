@@ -7,7 +7,7 @@ class Room{
     string name;
     //string description; ?
     
-    vector<Exit> exits;
+    vector<Room> exits;
     vector<Npc> npcs;
     vector<Item> items;
     vector<Observation> observations;       
@@ -26,19 +26,18 @@ class Room{
     //void addDescription(string){}  //possibly?
     //string getDescription(){}
     
-    vector<Exit> getExits(){
+    vector<Room> getExits(){
         return exits;
     }
     
     void addExit(Room r){
-        Exit e = Exit(this,r);
-        exits.push_back(e);
+        exits.push_back(r);
     }
     
     bool removeExit(Room r){
-        vector<Exit>::iterator it;
+        vector<Room>::iterator it;
         for(it=exits.begin(); it<exits.end(); it++){
-            if(r==(*it).getRoom1() || r==(*it).getRoom2()){
+            if(r==*it)){
                 exits.erase(it);
                 return true;
             }
@@ -46,7 +45,7 @@ class Room{
         return false;
     }
     
-    vector<Npcs> getNpcs(){
+    vector<Npc> getNpcs(){
         return npcs;
     }
     
@@ -64,7 +63,7 @@ class Room{
         return false;
     }
     
-    vector<Items> getItems(){
+    vector<Item> getItems(){
         return items;
     }
     
@@ -104,22 +103,3 @@ class Room{
 
 }
     
-
-class Exit{
- private:
-    Room room1;
-    Room room2;
-
- public:
-    Exit(Room r1,Room r2){
-        room1=r1;
-        room2=r2;
-    }
- 
-    Room getRoom1(){
-        return room1;
-    }
-    Room getRoom2(){
-        return room2;
-    }
-}
