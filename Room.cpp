@@ -1,13 +1,13 @@
 #include <string>
 #include <vector>
-//I CHANGED THE CODE
+
 class Room{
 
  private:
     string name;
     //string description; ?
     
-    vector<Room> exits;
+    vector<Exit> exits;
     vector<Npc> npcs;
     vector<Item> items;
     vector<Observation> observations;       
@@ -26,18 +26,19 @@ class Room{
     //void addDescription(string){}  //possibly?
     //string getDescription(){}
     
-    vector<Room> getExits(){
+    vector<Exit> getExits(){
         return exits;
     }
-  //Git is working now    //Git sucks, this is a test
+    
     void addExit(Room r){
-        exits.push_back(r);
+        Exit e = Exit(this,r);
+        exits.push_back(e);
     }
     
     bool removeExit(Room r){
         vector<Exit>::iterator it;
         for(it=exits.begin(); it<exits.end(); it++){
-            if(r==*it){
+            if(r==(*it).getRoom1() || r==(*it).getRoom2()){
                 exits.erase(it);
                 return true;
             }
@@ -45,7 +46,7 @@ class Room{
         return false;
     }
     
-    vector<Npc> getNpcs(){
+    vector<Npcs> getNpcs(){
         return npcs;
     }
     
@@ -63,7 +64,7 @@ class Room{
         return false;
     }
     
-    vector<Item> getItems(){
+    vector<Items> getItems(){
         return items;
     }
     
@@ -82,7 +83,7 @@ class Room{
         return false;
     }
     
-    void getObservations(){
+    vector<Observation> getObservations(){
         return observations;
     }
     
