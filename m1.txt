@@ -1,0 +1,13 @@
+Jinesh Desai, Andrew Judson, Austin Kasserman, Naveen Ponnappa
+11/30/11
+CIS190
+M1 progress update
+
+Mystery/Adventure game with text-based input and basic graphics
+So far, we've spent a lot of time planning out how our smaller classes will interact with our game engine.
+We've implemented most of these classes, but will need to modify them as we write the game engine. One issue
+that we've come across is that our classes might need to be modified based on how exactly we write our story,
+but we've tried to predict most of these possibilities and include them in the code. We still need an Item class,
+and might need to include an Option class that will let us execute different sets of code based on what a
+player chooses to do, although Observation may suffice. The better part of what we have left is the game engine.
+We plan to initially implement the game so that it is only text based, then integrate QT into it.
