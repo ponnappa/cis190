@@ -1,5 +1,7 @@
 #include <string>
 #include <vector>
+#include "Observation.cpp"
+using namespace std;
 
 class Room{
 
@@ -8,8 +10,8 @@ class Room{
     //string description; ?
     
     vector<Room> exits;
-    vector<Npc> npcs;
-    vector<Item> items;
+    //vector<Npc> npcs;
+    //vector<Item> items;
     vector<Observation> observations;       
     
     
@@ -18,11 +20,16 @@ class Room{
     Room(string _name){
         name=_name;
     }
+	
+	Room(){}
 
     string getName(){
         return name;
     }
     
+	bool equals(Room r){
+		return (getName().compare(r.getName()))==0;
+	}
     //void addDescription(string){}  //possibly?
     //string getDescription(){}
     
@@ -37,14 +44,14 @@ class Room{
     bool removeExit(Room r){
         vector<Room>::iterator it;
         for(it=exits.begin(); it<exits.end(); it++){
-            if(r==*it)){
+            if(r.equals(*it)){
                 exits.erase(it);
                 return true;
             }
         }
         return false;
     }
-    
+    /*
     vector<Npc> getNpcs(){
         return npcs;
     }
@@ -81,7 +88,7 @@ class Room{
         }
         return false;
     }
-    
+    */
     vector<Observation> getObservations(){
         return observations;
     }
@@ -93,7 +100,7 @@ class Room{
     bool removeObservation(Observation o){
         vector<Observation>::iterator it;
         for(it=observations.begin(); it<observations.end(); it++){
-            if(o==*it){
+            if(o.equals(*it)){
                 observations.erase(it);
                 return true;
             }
@@ -101,5 +108,5 @@ class Room{
         return false;
     }
 
-}
+};
     

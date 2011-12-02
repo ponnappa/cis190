@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+using namespace std;
 
 class Npc{
 
@@ -40,3 +41,4 @@ class Npc{
     void addAllowed(bool b){
       allowed_topics.push_back(b);
     }
+};

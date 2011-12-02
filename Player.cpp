@@ -1,12 +1,15 @@
 #include <string>
 #include <vector>
+#include "Room.cpp"
+
+using namespace std;
 
 class Player{
 	
 	private:
 		string name;
 		Room currentRoom;
-		vector<Items> items;
+		//vector<Items> items;
 	
 	public:
 		//constructor
@@ -26,7 +29,7 @@ class Player{
 		void setCurrentRoom(Room r){
 			currentRoom = r;
 		}
-		
+		/*
 		void addItem(Item i){
 			items.push_back(i);
 		}
@@ -45,14 +48,8 @@ class Player{
 		vector<Item> getItems(){
 			return items;
 		}
+*/
 
 
 
-
-
-
-
-
-
-
-}
+};

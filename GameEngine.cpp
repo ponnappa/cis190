@@ -1,12 +1,17 @@
 //Game Engine
 #include <vector>
 #include <string>
-//using namespace std
+#include <iostream>
+using namespace std;
 
 int main(){
-	while(1)
+	string s;
+	while(s.compare("q")!=0){
+		cin>>s;
+		cout<<"test "<<s << endl;
+	}
 	
 
 
-
+	return 0;
 }
