@@ -1,6 +1,6 @@
 #include <string>
 #include <vector>
-//I CHANGED THE CODE
+
 class Room{
 
  private:
@@ -29,15 +29,15 @@ class Room{
     vector<Room> getExits(){
         return exits;
     }
-  //Git is working now    //Git sucks, this is a test
+    
     void addExit(Room r){
         exits.push_back(r);
     }
     
     bool removeExit(Room r){
-        vector<Exit>::iterator it;
+        vector<Room>::iterator it;
         for(it=exits.begin(); it<exits.end(); it++){
-            if(r==*it){
+            if(r==*it)){
                 exits.erase(it);
                 return true;
             }
@@ -82,7 +82,7 @@ class Room{
         return false;
     }
     
-    void getObservations(){
+    vector<Observation> getObservations(){
         return observations;
     }
     
@@ -103,22 +103,3 @@ class Room{
 
 }
     
-
-class Exit{
- private:
-    Room room1;
-    Room room2;
-
- public:
-    Exit(Room r1,Room r2){
-        room1=r1;
-        room2=r2;
-    }
- 
-    Room getRoom1(){
-        return room1;
-    }
-    Room getRoom2(){
-        return room2;
-    }
-}
