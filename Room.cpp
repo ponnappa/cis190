@@ -1,6 +1,6 @@
 #include <string>
 #include <vector>
-#include "Observation.cpp"
+#include "Room.h"
 using namespace std;
 
 class Room{
