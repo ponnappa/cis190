@@ -1,7 +1,6 @@
 #include <string>
 #include <vector>
-using namespace std;
-
+//class Item;
 class Observation{
 
 	private:
