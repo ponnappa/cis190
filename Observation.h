@@ -8,25 +8,15 @@ class Observation{
 		//Item item;
 		
 	public:
-		Observation(string descrip){
-			description = descrip;
-		}
+		Observation(string descrip);
 		
-		bool equals(Observation o){
-			return (getDescription().compare(o.getDescription()))==0;
-		}
+		bool equals(Observation o);
 		
-		string getDescription(){
-			return description;
-		}
+		string getDescription();
 		/*
-		void linkItem(Item i){
-			item = i;
-		}
+		void linkItem(Item i);
 		
-		bool hasItem(){
-			return item!=NULL;
-		}
+		bool hasItem();
 */
 
 
