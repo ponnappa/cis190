@@ -1,4 +1,6 @@
-#include "Room.h"
+#include <string>
+#include <vector>
+#include "Observation.cpp"
 using namespace std;
 
 class Room{
@@ -7,10 +9,10 @@ class Room{
     string name;
     //string description; ?
     
-    vector<Room> exits;
+    vector<Room*> exits;
     //vector<Npc> npcs;
     //vector<Item> items;
-    vector<Observation> observations;       
+    vector<Observation*> observations;       
     
     
  public:
@@ -19,30 +21,36 @@ class Room{
         name=_name;
     }
 	
-	Room(){}
+	//Room(){}
 
     string getName(){
         return name;
     }
     
-	bool equals(Room r){
-		return (getName().compare(r.getName()))==0;
+	bool equals(Room *r){
+		return (getName().compare((*r).getName()))==0;
 	}
     //void addDescription(string){}  //possibly?
     //string getDescription(){}
     
-    vector<Room> getExits(){
+    vector<Room*> getExits(){
         return exits;
     }
     
-    void addExit(Room r){
-        exits.push_back(r);
+    void addExit(Room *r){
+        vector<Room*>::iterator it;
+        for(it=exits.begin(); it<exits.end(); it++){
+            if((*r).equals(*it)){
+                return;
+            }
+        }
+		exits.push_back(r);
     }
     
-    bool removeExit(Room r){
-        vector<Room>::iterator it;
+    bool removeExit(Room *r){
+        vector<Room*>::iterator it;
         for(it=exits.begin(); it<exits.end(); it++){
-            if(r.equals(*it)){
+            if((*r).equals(*it)){
                 exits.erase(it);
                 return true;
             }
@@ -87,18 +95,18 @@ class Room{
         return false;
     }
     */
-    vector<Observation> getObservations(){
+    vector<Observation*> getObservations(){
         return observations;
     }
     
-    void addObservation(Observation o){
+    void addObservation(Observation *o){
         observations.push_back(o);
     }
     
-    bool removeObservation(Observation o){
-        vector<Observation>::iterator it;
+    bool removeObservation(Observation *o){
+        vector<Observation*>::iterator it;
         for(it=observations.begin(); it<observations.end(); it++){
-            if(o.equals(*it)){
+            if((*o).equals(*it)){
                 observations.erase(it);
                 return true;
             }
