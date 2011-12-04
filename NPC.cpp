@@ -26,7 +26,7 @@ class Npc{
       return name;
     }
     
-    void getSpeech(){
+    vector<string> getSpeech(){
       return speech;
     }
     
