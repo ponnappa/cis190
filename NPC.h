@@ -1,6 +1,5 @@
 #include <string>
 #include <vector>
-using namespace std;
 
 class Npc{
 
@@ -18,27 +17,15 @@ class Npc{
       to let us control which things we can talk about
       at a given game state. Other ideas?*/
   public:
-    Npc(string _name){
-      name=_name;
-    }
+    Npc(string _name);
   
-    string getName(){
-      return name;
-    }
+    string getName();
     
-    void getSpeech(){
-      return speech;
-    }
+    void getSpeech();
     
-    void addSpeech(string s){
-      speech.push_back(s);
-    }
+    void addSpeech(string s);
     
-    void getAllowed(){
-      return allowed_topics;
-    }
+    void getAllowed();
     
-    void addAllowed(bool b){
-      allowed_topics.push_back(b);
-    }
+    void addAllowed(bool b);
 };
