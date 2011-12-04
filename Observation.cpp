@@ -13,8 +13,8 @@ class Observation{
 			description = descrip;
 		}
 		
-		bool equals(Observation o){
-			return (getDescription().compare(o.getDescription()))==0;
+		bool equals(Observation *o){
+			return (getDescription().compare((*o).getDescription()))==0;
 		}
 		
 		string getDescription(){
