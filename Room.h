@@ -3,6 +3,11 @@
 
 #include <string>
 #include <vector>
+#include "Npc.h"
+#include "Item.h"
+#include "Observation.h"
+
+
 
 class Room {
 public:
