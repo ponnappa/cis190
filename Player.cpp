@@ -8,12 +8,12 @@ class Player{
 	
 	private:
 		string name;
-		Room currentRoom;
+		Room *currentRoom;
 		//vector<Items> items;
 	
 	public:
 		//constructor
-		Player(string _name, Room _curr){
+		Player(string _name, Room *_curr){
 			name = _name;
 			currentRoom = _curr;
 		}
@@ -22,11 +22,11 @@ class Player{
 			return name;
 		}
 		
-		Room getCurrentRoom(){
+		Room *getCurrentRoom(){
 			return currentRoom;
 		}
 		
-		void setCurrentRoom(Room r){
+		void setCurrentRoom(Room *r){
 			currentRoom = r;
 		}
 		/*
