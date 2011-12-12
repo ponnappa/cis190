@@ -39,6 +39,7 @@ int main(){
 		cout<<"2)Observe room"<<endl;
 		cout<<"3)Talk to people"<<endl;
 		cout<<"4)Look at journal"<<endl;
+		cout<<"5)Get Description"<<endl;
 		int input= getUserInput(4);
 		if(input==1){
 			vector<Room*> ex = (*(*p).getCurrentRoom()).getExits();
@@ -62,9 +63,9 @@ int main(){
 			cout<<"Player "<<(*p).getName()<<" is in room "<<(*(*p).getCurrentRoom()).getName()<<endl<<endl;
 			continue;
 		}
-	//	string s2;
-	//	cin>>s;
-		//cout<<"test "<<s << endl;
+		if(input==5){
+			(*(*p).getCurrentRoom()).getDescription();
+		}
 	}
 	
 
