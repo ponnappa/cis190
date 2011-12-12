@@ -32,11 +32,11 @@ int main(){
 	(*r).addExit(ha);
 	(*ha).addExit(r);
 	Player *p = new Player("John",r);
-	cout<<"player "<<(*p).getName()<<" in room "<<(*(*p).getCurrentRoom()).getName()<<endl;
+	cout<<"player "<<(*p).getName()<<" in area "<<(*(*p).getCurrentRoom()).getName()<<endl;
 	
 	while(true){
 		cout<<"1)Move"<<endl;
-		cout<<"2)Observe room"<<endl;
+		cout<<"2)Observe area"<<endl;
 		cout<<"3)Talk to people"<<endl;
 		cout<<"4)Look at journal"<<endl;
 		cout<<"5)Get Description"<<endl;
@@ -60,7 +60,7 @@ int main(){
 			continue;
 		}
 		if(input==4){
-			cout<<"Player "<<(*p).getName()<<" is in room "<<(*(*p).getCurrentRoom()).getName()<<endl<<endl;
+			cout<<"Player "<<(*p).getName()<<" is in area "<<(*(*p).getCurrentRoom()).getName()<<endl<<endl;
 			continue;
 		}
 		if(input==5){
