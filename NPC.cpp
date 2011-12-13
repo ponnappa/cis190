@@ -7,39 +7,55 @@ class Npc{
 
   private:
     string name;
-
-    vector<string> speech;
+	string description;
+	Item *item;
+	string speech;
+    vector<string> responses;
     /*vector<Item> inventory;
       vector<Observation> observations;
       Should this be handled as part of the room class?
       I see complications if we have two separate logs
       of items/observations in a room*/
-    vector<bool> allowed_topics;
+    //vector<bool> allowed_topics;
     /*This will interface with the speech,
       to let us control which things we can talk about
       at a given game state. Other ideas?*/
   public:
-    Npc(string _name){
+    Npc(string _name, string _description){
       name=_name;
+	  description=_description;
+	  speech ="";
     }
   
     string getName(){
       return name;
     }
+	
+	string getDescription(){
+		return description;
+	}
     
-    vector<string> getSpeech(){
-      return speech;
+	string getSpeech(){
+		return speech;
+	}
+	
+	string changeSpeech(string s){
+		speech = s;
+	}
+	
+    vector<string> getResponses(){
+      return responses;
     }
     
-    void addSpeech(string s){
-      speech.push_back(s);
+    void addResponse(string r){
+      response.push_back(r);
     }
-    
+    /*
     void getAllowed(){
       return allowed_topics;
     }
     
     void addAllowed(bool b){
       allowed_topics.push_back(b);
-    }
+    }*/
 };

@@ -9,7 +9,8 @@ class Player{
 	private:
 		string name;
 		Room *currentRoom;
-		//vector<Items> items;
+		vector<Observation*> journal;
+		vector<Item*> items;
 	
 	public:
 		//constructor
@@ -22,6 +23,10 @@ class Player{
 			return name;
 		}
 		
+		void setName(string _name){
+			name = _name;
+		}
+		
 		Room *getCurrentRoom(){
 			return currentRoom;
 		}
@@ -29,23 +34,23 @@ class Player{
 		void setCurrentRoom(Room *r){
 			currentRoom = r;
 		}
-		/*
-		void addItem(Item i){
+		
+		void addItem(Item *i){
 			items.push_back(i);
 		}
 		
-		bool removeItem(Item remit){
+		bool removeItem(Item *remit){
 			vector<Item>::iterator it;
 			for(it=items.begin(); it<items.end(); it++){
-				if(remit==*it){
-					npcs.erase(it);
+				if((*remit).equals(*it)){
+					items.erase(it);
 					return true;
 				}
 			}
         return false;
 		}
 		
-		vector<Item> getItems(){
+		vector<Item*> getItems(){
 			return items;
 		}
 */
