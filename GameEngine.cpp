@@ -59,11 +59,11 @@ int main(){
 	Observation *vending_obs = new Observation("vending machine","A soda would be delicious.");
 	Observation *door_obs = new Observation("door to your room", "You notice that while other doors have student name tags, yours does not");
 	
-	Observation *knife_obs = new Observation("");
-	Observation *squirrel_obs = new Observation("");
+	Observation *knife_obs = new Observation("knife","");
+	Observation *squirrel_obs = new Observation("squirrel","");
 	
-	Observation *printer_obs = new Observation("");
-	Observation *chair_obs = new Observation("");
+	Observation *printer_obs = new Observation("printer","out of ink");
+	Observation *chair_obs = new Observation("chair","");
 	
 	//add items to observations
 	(*computer_obs).addItem(computer);
@@ -91,7 +91,7 @@ int main(){
 	//create NPCs
 	Npc *bob = new Npc("Bob","You hate living with Bob.");
 	
-	Npc *nurse new Npc("nursing student","The nursing student that lives down the hall. You forget her name too.");
+	Npc *nurse = new Npc("nursing student","The nursing student that lives down the hall. You forget her name too.");
 	
 	Npc *zach = new Npc("Zach Zarrow", "Zach Zarrow is a jolly good fellow.");
 	Npc *wharton = new Npc("Whartonite", "He's wearing a suit.");
@@ -109,7 +109,7 @@ int main(){
 	(*quad).addNpc(troll);
 	(*lab).addNpc(itaman);
 	(*lab).addNpc(student1);
-	(*lab).addNpc(student1);
+	(*lab).addNpc(student2);
 
     //create the player
 	Player *p = new Player("UnknownName",br);
@@ -122,7 +122,7 @@ int main(){
 		cout<<"3)Talk to people"<<endl;
 		cout<<"4)Look at journal"<<endl;
 		cout<<"5)Get Description"<<endl;
-		int input= getUserInput(4);
+		int input= getUserInput(5);
 		if(input==1){
 			vector<Room*> ex = (*(*p).getCurrentRoom()).getExits();
 			for(unsigned int i=0; i<ex.size();i++){
@@ -150,14 +150,23 @@ int main(){
 			
 		}
 		if(input==3){
-			continue;
+			vector<Npc*> npcs = (*(*p).getCurrentRoom()).getNpcs();
+			for(unsigned int i=0; i<npcs.size();i++){
+				cout<<(i+1)<<")"<<(*(npcs.at(i))).getName()<<endl;
+			}
+			cout<<"type \"back\" to go back"<<endl<<endl;
+			int npcchoose = getUserInput(npcs.size());
+			if(npcchoose==-1){
+				continue;
+			}
+			
 		}
 		if(input==4){
 			cout<<"Player "<<(*p).getName()<<" is in area "<<(*(*p).getCurrentRoom()).getName()<<endl<<endl;
 			continue;
 		}
 		if(input==5){
-			(*(*p).getCurrentRoom()).getDescription();
+			(*(*p).getCurrentRoom()).printDescription();
 		}
 	}
 	

@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include "Item.h"
 using namespace std;
 
 class Observation{
@@ -32,7 +33,7 @@ class Observation{
 		}
 		
 		bool hasItem(){
-			return *item!=NULL;
+			return item!=NULL;
 		}
 
 

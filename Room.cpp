@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include "Observation.cpp"
+#include "NPC.cpp"
 using namespace std;
 
 class Room{
@@ -25,18 +26,19 @@ class Room{
     
     
     void printDescription(){
-        cout << "You are in the " << this.name <<" " << description << endl;
-        cout << "The " << this.name << " contains the following people:";
+        cout << "You are in the " << name <<" " << description << endl;
+        cout << "The " << name << " contains the following people:";
         vector<Npc*>::iterator it1;
         for(it1=npcs.begin(); it1<npcs.end(); it1++){
-            cout<< *it1.getName(); << " ";
+            cout<< (*(*it1)).getName() << " ";
         }
+		cout<<endl;
 		//modify
-        cout<< endl << "and the following items:";
+        /*cout<< endl << "and the following items:";
         vector<Item*>::iterator it2;
         for(it2=items.begin(); it2<items.end(); it2++){
             cout<< *it2.getName(); << " ";
-        }
+        }*/
     
     }
 
@@ -141,9 +143,9 @@ class Room{
     }
     
     bool removeObservation(Observation *o){
-        vector<Observations*>::iterator it;
+        vector<Observation*>::iterator it;
         for(it=observations.begin(); it<observations.end(); it++){
-            if((*i).equals(*it)){
+            if((*o).equals(*it)){
                observations.erase(it);
                 return true;
             }

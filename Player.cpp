@@ -40,9 +40,9 @@ class Player{
 		}
 		
 		bool removeItem(Item *remit){
-			vector<Item>::iterator it;
+			vector<Item*>::iterator it;
 			for(it=items.begin(); it<items.end(); it++){
-				if((*remit).equals(*it)){
+				if((*remit).equals((*it))){
 					items.erase(it);
 					return true;
 				}
@@ -53,7 +53,6 @@ class Player{
 		vector<Item*> getItems(){
 			return items;
 		}
-*/
 
 
 

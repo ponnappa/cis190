@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include "Item.h"
 using namespace std;
 
 class Npc{
@@ -38,7 +39,7 @@ class Npc{
 		return speech;
 	}
 	
-	string changeSpeech(string s){
+	void changeSpeech(string s){
 		speech = s;
 	}
 	
@@ -47,8 +48,13 @@ class Npc{
     }
     
     void addResponse(string r){
-      response.push_back(r);
+      responses.push_back(r);
     }
+	
+	bool equals(Npc *n){
+			return (getName().compare((*n).getName()))==0;
+	}
+		
     /*
     void getAllowed(){
       return allowed_topics;
