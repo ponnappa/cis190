@@ -11,7 +11,7 @@ class Room{
     
     vector<Room*> exits;
     vector<Npc*> npcs;
-    vector<Item*> items;
+    //vector<Item*> items;
     vector<Observation*> observations;       
     
     
@@ -31,6 +31,7 @@ class Room{
         for(it1=npcs.begin(); it1<npcs.end(); it1++){
             cout<< *it1.getName(); << " ";
         }
+		//modify
         cout<< endl << "and the following items:";
         vector<Item*>::iterator it2;
         for(it2=items.begin(); it2<items.end(); it2++){
@@ -38,11 +39,6 @@ class Room{
         }
     
     }
-
-
-
-
-
 
     string getName(){
         return name;
@@ -103,7 +99,7 @@ class Room{
         }
         return false;
     }
-    
+    /*
     vector<Item*> getItems(){
         return items;
     }
@@ -128,7 +124,7 @@ class Room{
         }
         return false;
     }
-    
+    */
     
     vector<Observation*> getObservations(){
         return observations;

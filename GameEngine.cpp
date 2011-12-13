@@ -54,7 +54,18 @@ int main(){
 			continue;
 		}
 		if(input==2){
-			continue;
+			vector<Observation*> obs = (*(*p).getCurrentRoom()).getObservations();
+			for(unsigned int i=0; i<obs.size();i++){
+				cout<<(i+1)<<")"<<(*(obs.at(i))).getName()<<endl;
+			}
+			cout<<"type \"back\" to go back"<<endl<<endl;
+			int playobs = getUserInput(obs.size());
+			if(playobs==-1){
+				continue;
+			}
+			
+			Observation o = (*(obs.at(playobs-1)));
+			
 		}
 		if(input==3){
 			continue;

@@ -5,30 +5,35 @@ using namespace std;
 class Observation{
 
 	private:
+		string name;
 		string description;
-		//Item item;
+		Item *item;
 		
 	public:
-		Observation(string descrip){
-			description = descrip;
+		Observation(string _name, string _description){
+			description = _description;
+			name = _name;
+			item = NULL;
 		}
 		
 		bool equals(Observation *o){
-			return (getDescription().compare((*o).getDescription()))==0;
+			return (getName().compare((*o).getName()))==0;
 		}
 		
+		string getName(){
+			return name;
+		}
 		string getDescription(){
 			return description;
 		}
-		/*
-		void linkItem(Item i){
+		
+		void addItem(Item *i){
 			item = i;
 		}
 		
 		bool hasItem(){
-			return item!=NULL;
+			return *item!=NULL;
 		}
-*/
 
 
 
