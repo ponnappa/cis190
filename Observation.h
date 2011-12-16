@@ -1,24 +1,23 @@
+#ifndef OBSERVATION_H
+#define OBSERVATION_H
+
 #include <string>
 #include <vector>
-//class Item;
+#include "Item.h"
+
 class Observation{
 
-	private:
-		string description;
-		//Item item;
-		
-	public:
-		Observation(string descrip);
-		
-		bool equals(Observation o);
-		
-		string getDescription();
-		/*
-		void linkItem(Item i);
-		
-		bool hasItem();
-*/
-
-
-
+private:
+	string name;
+	string description;
+	Item *item;
+public:
+	Observation(string _name, string _description);
+	bool equals(Observation *o);
+	string getName();
+	string getDescription();
+	void addItem(Item *i);
+	bool hasItem();
 };
+#endif // OBSERVATION_H
+

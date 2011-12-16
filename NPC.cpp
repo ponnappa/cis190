@@ -7,10 +7,10 @@ class Npc{
 
   private:
     string name;
-	string description;
-	Item *item;
-	string speech;
-    vector<string> responses;
+    string description;
+    Item *item;
+    string speech;
+    vector<Dialogue> responses;
     /*vector<Item> inventory;
       vector<Observation> observations;
       Should this be handled as part of the room class?
@@ -35,26 +35,30 @@ class Npc{
 		return description;
 	}
     
-	string getSpeech(){
-		return speech;
-	}
+    string getSpeech(){
+        return speech;
+    }
 	
 	void changeSpeech(string s){
 		speech = s;
 	}
 	
-    vector<string> getResponses(){
+	vector<Dialogue> getResponses(){
       return responses;
     }
     
-    void addResponse(string r){
-      responses.push_back(r);
+    void addResponse(Dialogue d){
+      responses.push_back(d);
     }
 	
+	void updateNPC(){
+
+	}
+
 	bool equals(Npc *n){
 			return (getName().compare((*n).getName()))==0;
 	}
-		
+
     /*
     void getAllowed(){
       return allowed_topics;

@@ -1,41 +1,27 @@
-#include <string>
-#include <vector>
-#include "Item.h"
+#include "Observation.h"
 using namespace std;
+//12/16 early update
+Observation::Observation(string _name, string _description){
+    description = _description;
+    name = _name;
+    item = NULL;
+}
 
-class Observation{
+bool Observation::equals(Observation *o){
+    return (getName().compare((*o).getName()))==0;
+}
 
-	private:
-		string name;
-		string description;
-		Item *item;
-		
-	public:
-		Observation(string _name, string _description){
-			description = _description;
-			name = _name;
-			item = NULL;
-		}
-		
-		bool equals(Observation *o){
-			return (getName().compare((*o).getName()))==0;
-		}
-		
-		string getName(){
-			return name;
-		}
-		string getDescription(){
-			return description;
-		}
-		
-		void addItem(Item *i){
-			item = i;
-		}
-		
-		bool hasItem(){
-			return item!=NULL;
-		}
+string Observation::getName(){
+    return name;
+}
+string Observation::getDescription(){
+    return description;
+}
 
+void Observation::addItem(Item *i){
+    item = i;
+}
 
-
-};
+bool Observation::hasItem(){
+    return item!=NULL;
+}
