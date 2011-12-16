@@ -3,6 +3,8 @@
 
 #include<string>
 #include<vector>
+#include "Room.cpp"
+#include "Item.cpp"
 
 class Player {
   
