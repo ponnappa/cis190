@@ -21,3 +21,4 @@ class Player {
     removeItem(Item *remit);
 };
     
+#endif // PLAYER_H
