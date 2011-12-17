@@ -11,6 +11,9 @@ using namespace std;
 //constructor
 Game::Game(){
     state[0]=false; // 0 have asked bob your name
+    
+    
+    
     state[1]=false; // 1 talked to Zach Zarrow once
     state[2]=false; // 2 have danced for Zach Zarrow
     state[3]=false; // 3 have received 3 quarters
@@ -60,10 +63,10 @@ bool * Game::getState(){
 
 void Game::run(){
 
-	Room *br = new Room("Bedroom", "This is your dorm room. It's rancid." );
-	Room *hall = new Room("Hall","Halls are exciting places.");
-	Room *quad = new Room("Quad", "What a pretty place the quad is.");
-	Room *lab = new Room("Computer Lab", "Wewt.");
+	Room *br = new Room("Bedroom", "This is your dorm room. It's rancid.",this);
+	Room *hall = new Room("Hall","Halls are exciting places.",this);
+	Room *quad = new Room("Quad", "What a pretty place the quad is.",this);
+	Room *lab = new Room("Computer Lab", "Wewt.",this);
 	
 	//create exits
 	(*br).addExit(hall);
