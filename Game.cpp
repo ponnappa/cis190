@@ -10,11 +10,12 @@ using namespace std;
 
 //constructor
 Game::Game(){
-    state[0]=false; // 0 have asked bob your name
+    state[0]=true;  //bob is happy
+    state[1]=false; //have talked to bob
     
     
     
-    state[1]=false; // 1 talked to Zach Zarrow once
+    /*state[1]=false; // 1 talked to Zach Zarrow once
     state[2]=false; // 2 have danced for Zach Zarrow
     state[3]=false; // 3 have received 3 quarters
     state[4]=false; // 4 talked to laplaces demon once
@@ -25,7 +26,7 @@ Game::Game(){
     state[9]=false; // 9 solved student1's problem
     state[10]=false; // 10 solved student2's problem
     state[11]=false; // 11 aware that you need money
-    state[12]=false; // 12 have 4 bucks
+    state[12]=false; // 12 have 4 bucks*/
 }
 
 void Game::updateGame(Observation *o, Player *p){
@@ -139,6 +140,18 @@ void Game::run(){
 	Npc *itaman = new Npc("ITA Manager", "The ITA manager is playing Starcraft.",this);
 	Npc *student1 = new Npc("Student1", "This student is working at a computer.",this);
 	Npc *student2 = new Npc("Student2", "This student is working at a computer.",this);
+	
+	//create "observations" that are npc dialogue
+	Observation *bob1= new Observation("intro","hi im bob im your roommate i think you're pretty cool",this);
+	Observation *bob2= new Observation("leave me alone","leave me alone",this);
+	
+	(*bob1).addTrigger(1);
+	(*bob1).addChange(0,true);
+	(*bob1).addChange(1,false);
+	
+	(*bob2).addTrigger(0);
+	
+	
 	
 	//add Npcs to rooms
 	(*br).addNpc(bob);
