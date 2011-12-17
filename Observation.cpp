@@ -1,9 +1,10 @@
 #include "Observation.h"
 using namespace std;
-//12/16 early update
-Observation::Observation(string _name, string _description){
+
+Observation::Observation(string _name, string _description, Game *_game){
     description = _description;
     name = _name;
+    game = _game;
     item = NULL;
 }
 
@@ -24,4 +25,36 @@ void Observation::addItem(Item *i){
 
 bool Observation::hasItem(){
     return item!=NULL;
+}
+
+bool Observation::hasTake(){
+    return take!=NULL;
+}
+
+Item* Observation::getTake(){
+    Item *temp = take;
+    take = NULL;
+    return temp;
+}
+
+Item* Observation::removeItem(){
+    Item *temp = item;
+    item = NULL;
+    return temp;
+}
+
+void Observation::addTrigger(int i){
+    triggers.insert(i);
+}
+
+set<int> Observation::getTriggers(){
+    return triggers;
+}
+
+void Observation::addChange(int i,bool b){
+    changes[i]=b;
+}
+
+map<int,bool> Observation::getChanges(){
+    return changes;
 }
