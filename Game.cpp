@@ -229,6 +229,11 @@ void Game::run(){
 			(*(*p).getCurrentRoom()).printDescription();
 		}
 	}
+}
 
 
+int main(){
+	Game *g = new Game()
+	(*g).run();
+	return 0;
 }
