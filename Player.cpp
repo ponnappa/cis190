@@ -1,45 +1,34 @@
-#include <string>
-#include <vector>
-#include "Room.cpp"
+#include "Player.h"
 
 using namespace std;
 
-class Player{
-	
-	private:
-		string name;
-		Room *currentRoom;
-		vector<Observation*> journal;
-		vector<Item*> items;
-	
-	public:
-		//constructor
-		Player(string _name, Room *_curr){
+
+		Player::Player(string _name, Room *_curr){
 			name = _name;
 			currentRoom = _curr;
 		}
 		
-		string getName(){
+		string Player::getName(){
 			return name;
 		}
 		
-		void setName(string _name){
+		void Player::setName(string _name){
 			name = _name;
 		}
 		
-		Room *getCurrentRoom(){
+		Room *Player::getCurrentRoom(){
 			return currentRoom;
 		}
 		
-		void setCurrentRoom(Room *r){
+		void Player::setCurrentRoom(Room *r){
 			currentRoom = r;
 		}
 		
-		void addItem(Item *i){
+		void Player::addItem(Item *i){
 			items.push_back(i);
 		}
 		
-		bool removeItem(Item *remit){
+		bool Player::removeItem(Item *remit){
 			vector<Item*>::iterator it;
 			for(it=items.begin(); it<items.end(); it++){
 				if((*remit).equals((*it))){
@@ -50,10 +39,9 @@ class Player{
         return false;
 		}
 		
-		vector<Item*> getItems(){
+		xvector<Item*>Player::getItems(){
 			return items;
 		}
 
 
 
-};
