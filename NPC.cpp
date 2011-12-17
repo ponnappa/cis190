@@ -1,68 +1,46 @@
-#include "Item.h"
+#include "NPC.h"
 using namespace std;
 
-class Npc{
-
-  private:
-    string name;
-    string description;
-    Item *item;
-    string speech;
-    vector<Dialogue> responses;
-    /*vector<Item> inventory;
-      vector<Observation> observations;
-      Should this be handled as part of the room class?
-      I see complications if we have two separate logs
-      of items/observations in a room*/
-    //vector<bool> allowed_topics;
-    /*This will interface with the speech,
-      to let us control which things we can talk about
-      at a given game state. Other ideas?*/
-  public:
-    Npc(string _name, string _description){
-      name=_name;
-	  description=_description;
-	  speech ="";
-    }
+	Npc::Npc(string _name, string _description, Game *_game){
+		name=_name;
+	 	description=_description;
+		game = _game;
+	}
   
-    string getName(){
+    string Npc::getName(){
       return name;
     }
 	
-	string getDescription(){
+	string Npc::getDescription(){
 		return description;
 	}
     
-    string getSpeech(){
-        return speech;
-    }
-	
-	void changeSpeech(string s){
-		speech = s;
-	}
-	
-	vector<Dialogue> getResponses(){
-      return responses;
+    vector<Observation*> Npc::getResponses(){
+        vector<Observation*> newresp;
+        vector<Observation*>::iterator it;
+        for(it=responses.begin(); it<responses.end(); it++){
+            Observation* o = (*it);
+            set<int>::iterator it2;
+            bool flag = true;
+            for(it2=(*o).getTriggers().begin(); it2<(*o).getTriggers.end(); it2++){
+                if(!(*((*game).getState()+(*it)*sizeof(bool)))){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                newresp.push_back(o);
+            }
+        }
+
+        return newresp;
     }
     
-    void addResponse(Dialogue d){
-      responses.push_back(d);
-    }
-	
-	void updateNPC(){
+	    void Npc::addResponse(Observation *o){
+	      responses.push_back(o);
+	    }
 
+
+	bool Npc::equals(Npc *n){
+		return (getName().compare((*n).getName()))==0;
 	}
-
-	bool equals(Npc *n){
-			return (getName().compare((*n).getName()))==0;
-	}
-
-    /*
-    void getAllowed(){
-      return allowed_topics;
-    }
-    
-    void addAllowed(bool b){
-      allowed_topics.push_back(b);
-    }*/
-};
