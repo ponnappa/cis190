@@ -2,9 +2,10 @@
 using namespace std;
 
 
-    Room::Room(string _name, string _description){
+    Room::Room(string _name, string _description, Game *_game){
         name=_name;
         description=_description;
+        game = _game;
     }
 	
     
@@ -18,13 +19,14 @@ using namespace std;
         }
 		cout<<endl;
 		//modify
-        /*cout<< endl << "and the following items:";
-        vector<Item*>::iterator it2;
-        for(it2=items.begin(); it2<items.end(); it2++){
-            cout<< *it2.getName(); << " ";
-        }*/
+		cout<< endl << "and the following things:";
+		vector<Observation*>::iterator it2;
+		for(it2=observations.begin(); it2<observations.end(); it2++){
+			cout<< (*it2).getName(); << " ,";
+		}
     
     }
+
 
     string Room::getName(){
         return name;
@@ -113,8 +115,27 @@ using namespace std;
     */
     
     vector<Observation*> Room::getObservations(){
-        return observations;
-    }
+        vector<Observation*> newresp;
+        vector<Observation*>::iterator it;
+        for(it=observations.begin(); it<observations.end(); it++){
+            Observation* o = (*it);
+            set<int>::iterator it2;
+            bool flag = true;
+            for(it2=(*o).getTriggers().begin(); it2<(*o).getTriggers.end(); it2++){
+                if(!(*((*game).getState()+(*it)*sizeof(bool)))){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                newresp.push_back(o);
+            }
+        }
+        //new vector
+        //for each response in responses
+        //add response to vector if isTriggered && GameEngine.state
+        return newresp;
+        }
     
     void Room::addObservation(Observation *o){
         vector<Observation*>::iterator it;
