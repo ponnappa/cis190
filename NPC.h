@@ -1,31 +1,33 @@
+#ifndef __NPC_HEADER__
+#define __NPC_HEADER__
 #include <string>
 #include <vector>
+#include "Observation.h"
+#include "Game.h"
 
+using namespace std;
 class Npc{
 
   private:
     string name;
+    string description;
+    vector<Observation> responses;
+    Game *game;
 
-    vector<string> speech;
-    /*vector<Item> inventory;
-      vector<Observation> observations;
-      Should this be handled as part of the room class?
-      I see complications if we have two separate logs
-      of items/observations in a room*/
-    vector<bool> allowed_topics;
-    /*This will interface with the speech,
-      to let us control which things we can talk about
-      at a given game state. Other ideas?*/
+
   public:
-    Npc(string _name);
+    Npc(string _name, string _description, Game *_game);
   
     string getName();
+	
+	  string getDescription();
     
-    void getSpeech();
+    vector<Observation*> getResponses();
     
-    void addSpeech(string s);
-    
-    void getAllowed();
-    
-    void addAllowed(bool b);
+    void addResponse(Observation *o);
+	
+	  void updateNPC();
+
+	  bool equals(Npc *n);
 };
+#endif
