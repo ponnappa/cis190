@@ -25,6 +25,19 @@ Game::Game(){
     state[12]=false; // 12 have 4 bucks
 }
 
+void Game::updateGame(Observation *o, Player *p){
+	if((*o).hasTake()){
+		(*p).removeItem((*o).getTake());
+	}
+	if((*o).hasItem()){
+		(*p).addItem((*o).removeItem());
+	}
+	map<int,bool> m = (*o).getChanges();
+	map<int,bool>::iterator it;
+	for (it=m.begin() ; it != m.end(); it++){
+		state[(*it).first] = (*it).second;
+	}
+}
 
 int Game::getUserInput(int n){
 	string in;
@@ -147,13 +160,13 @@ void Game::run(){
 
 	cout<<"player "<<(*p).getName()<<" in area "<<(*(*p).getCurrentRoom()).getName()<<endl;
 	
-	while(true){
+		while(true){
 		cout<<"1)Move"<<endl;
 		cout<<"2)Observe area"<<endl;
 		cout<<"3)Talk to people"<<endl;
-		cout<<"4)Look at journal"<<endl;
-		cout<<"5)Get Description"<<endl;
-		int input= getUserInput(5);
+		//cout<<"4)Look at journal"<<endl;
+		cout<<"4)Get Description"<<endl;
+		int input= getUserInput(4);
 		if(input==1){
 			vector<Room*> ex = (*(*p).getCurrentRoom()).getExits();
 			for(unsigned int i=0; i<ex.size();i++){
@@ -178,7 +191,9 @@ void Game::run(){
 			}
 			
 			Observation o = (*(obs.at(playobs-1)));
-			
+			cout<<(*o).getDescription()<<endl;
+			update_game(o,p);
+			continue;
 		}
 		if(input==3){
 			vector<Npc*> npcs = (*(*p).getCurrentRoom()).getNpcs();
@@ -191,14 +206,26 @@ void Game::run(){
 				continue;
 			}
 			Npc n = *(npcs.at(npcchoose-1));
-			vector<Observation*>
+			vector<Observation*> resps = n.getResponses();
+			for(unsigned int i=0; i<resps.size();i++){
+				cout<<(i+1)<<")"<<(*(resps.at(i))).getName()<<endl;
+			}
+			cout<<"type \"back\" to go back"<<endl<<endl;
+			int respchoose = getUserInput(resps.size());
+			if(respchoose==-1){
+				continue;
+			}
+			Observation *o = (resps.at(respchoose-1));
+			cout<<(*o).getDescription()<<endl;
+			update_game(o,p);
+			continue;
 			
 		}
-		if(input==4){
+		/*if(input==4){
 			cout<<"Player "<<(*p).getName()<<" is in area "<<(*(*p).getCurrentRoom()).getName()<<endl<<endl;
 			continue;
-		}
-		if(input==5){
+		}*/
+		if(input==4){
 			(*(*p).getCurrentRoom()).printDescription();
 		}
 	}
