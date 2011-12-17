@@ -1,7 +1,8 @@
 //Game Engine
 #include <iostream>
 #include <stdlib.h>
-using namespace std;
+#include "Game.h"
+
 
 int main(){
     Game g = new Game();
