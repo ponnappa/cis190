@@ -190,6 +190,8 @@ void Game::run(){
 			if(npcchoose==-1){
 				continue;
 			}
+			Npc n = *(npcs.at(npcchoose-1));
+			vector<Observation*>
 			
 		}
 		if(input==4){
