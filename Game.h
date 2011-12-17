@@ -6,7 +6,7 @@ class Game
   private:
     bool state[40];
     int getUserInput(int);
-    
+    void updateGame(Observation *o, Player *p)
     
   public:
     Game();
