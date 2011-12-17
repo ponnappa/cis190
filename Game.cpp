@@ -92,17 +92,17 @@ void Game::run(){
 	Item *chair = new Item("char");
 	
 	//create observations
-	Observation *computer_obs = new Observation("computer","You computer has a blue screen of death");
-	Observation *notes_obs = new Observation("class notes","There is mentioning of a project due in CIS190");
+	Observation *computer_obs = new Observation("computer","You computer has a blue screen of death",this);
+	Observation *notes_obs = new Observation("class notes","There is mentioning of a project due in CIS190",this);
 	
-	Observation *vending_obs = new Observation("vending machine","A soda would be delicious.");
-	Observation *door_obs = new Observation("door to your room", "You notice that while other doors have student name tags, yours does not");
+	Observation *vending_obs = new Observation("vending machine","A soda would be delicious.",this);
+	Observation *door_obs = new Observation("door to your room", "You notice that while other doors have student name tags, yours does not",this);
 	
-	Observation *knife_obs = new Observation("knife","");
-	Observation *squirrel_obs = new Observation("squirrel","");
+	Observation *knife_obs = new Observation("knife","",this);
+	Observation *squirrel_obs = new Observation("squirrel","",this);
 	
-	Observation *printer_obs = new Observation("printer","out of ink");
-	Observation *chair_obs = new Observation("chair","");
+	Observation *printer_obs = new Observation("printer","out of ink",this);
+	Observation *chair_obs = new Observation("chair","",this);
 	
 	//add items to observations
 	(*computer_obs).addItem(computer);
@@ -128,25 +128,17 @@ void Game::run(){
 	(*lab).addObservation(chair_obs);
 	
 	//create NPCs
-	Npc *bob = new Npc("Bob","You hate living with Bob.");
+	Npc *bob = new Npc("Bob","You hate living with Bob.",this);
 	
-	Dialogue *d = new Dialogue();
-	(*d).setOption("What type of laptop do you have?");
-	(*d).addResponse("I have an alienware. It's awesome.");
-	(*d).addResponse("Leave me alone dude.");
+	Npc *nurse = new Npc("nursing student","The nursing student that lives down the hall. You forget her name too.",this);
 	
-	(*bob).addResponse(d);
+	Npc *zach = new Npc("Zach Zarrow", "Zach Zarrow is a jolly good fellow.",this);
+	Npc *wharton = new Npc("Whartonite", "He's wearing a suit.",this);
+	Npc *troll = new Npc("troll", "The troll looks like he's in a trolling mood.",this);
 	
-	
-	Npc *nurse = new Npc("nursing student","The nursing student that lives down the hall. You forget her name too.");
-	
-	Npc *zach = new Npc("Zach Zarrow", "Zach Zarrow is a jolly good fellow.");
-	Npc *wharton = new Npc("Whartonite", "He's wearing a suit.");
-	Npc *troll = new Npc("troll", "The troll looks like he's in a trolling mood.");
-	
-	Npc *itaman = new Npc("ITA Manager", "The ITA manager is playing Starcraft.");
-	Npc *student1 = new Npc("Student1", "This student is working at a computer.");
-	Npc *student2 = new Npc("Student2", "This student is working at a computer.");
+	Npc *itaman = new Npc("ITA Manager", "The ITA manager is playing Starcraft.",this);
+	Npc *student1 = new Npc("Student1", "This student is working at a computer.",this);
+	Npc *student2 = new Npc("Student2", "This student is working at a computer.",this);
 	
 	//add Npcs to rooms
 	(*br).addNpc(bob);
