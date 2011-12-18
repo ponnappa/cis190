@@ -1,5 +1,9 @@
 #include "Player.h"
-
+#include<string>
+#include<vector>
+/*#include "Room.h"
+#include "Item.h"
+#include "Observation.h"*/
 using namespace std;
 
 
@@ -39,7 +43,7 @@ using namespace std;
         return false;
 		}
 		
-		xvector<Item*>Player::getItems(){
+		vector<Item*>Player::getItems(){
 			return items;
 		}
 

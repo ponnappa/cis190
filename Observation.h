@@ -1,9 +1,17 @@
-#ifndef OBSERVATION_H
-#define OBSERVATION_H
+#ifndef __OBSERVATION_H__
+#define __OBSERVATION_H__
 
 #include <string>
 #include <vector>
+#include <set>
+#include <map>
 #include "Item.h"
+#include "Game.h"
+
+using namespace std;
+
+class Game;
+class Item;
 
 class Observation{
 

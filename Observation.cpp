@@ -1,4 +1,10 @@
 #include "Observation.h"
+#include <string>
+#include <vector>
+#include <set>
+#include <map>
+/*#include "Item.h"
+#include "Game.h"*/
 using namespace std;
 
 Observation::Observation(string _name, string _description, Game *_game){
@@ -31,7 +37,7 @@ bool Observation::hasTake(){
     return take!=NULL;
 }
 
-Item* Observation::getTake(){
+Item* Observation::removeTake(){
     Item *temp = take;
     take = NULL;
     return temp;

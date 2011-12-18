@@ -6,16 +6,29 @@
 #include "Npc.h"
 #include "Item.h"
 #include "Observation.h"
+#include "Game.h"
+class Game;
+class Item;
+class Observation;
+class Npc;
 
+using namespace std;
 
 
 class Room {
+private:
+    string name;
+    vector<Room*> exits;
+    vector<Npc*> npcs;
+    vector<Observation*> observations; 
+	string description;
+	Game *game;
 public:
-    Room(string _name);
+    Room(string _name, string _description, Game *g);
     
     string getName();
     
-    void printDescription();
+    //void printDescription();
     
     vector<Room*> getExits();
     void addExit(Room *r);
@@ -31,14 +44,9 @@ public:
     
     vector<Observation*> getObservations();
     void addObservation(Observation *o);
-    bool removeObservation(Observation *o);
-
-private:
-    string name;
-    vector<Room*> exits;
-    vector<Npc*> npcs;
-    vector<Item*> items;
-    vector<Observation*> observations;  
+    bool removeObservation(Observation *o); 
+	
+	bool equals(Room *r);
 };
 
 #endif

@@ -2,10 +2,15 @@
 #include <iostream>
 #include <stdlib.h>
 #include "Game.h"
+#include "Player.h"
+#include "Observation.h"
+#include "Room.h"
+#include "Npc.h"
+#include "Item.h"
 
 
 int main(){
-    Game g = new Game();
-    g.run();
-    return 0;
+    Game *g = new Game();
+	(*g).run();
+	return 0;
 }

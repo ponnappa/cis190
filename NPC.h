@@ -5,13 +5,16 @@
 #include "Observation.h"
 #include "Game.h"
 
+class Game;
+class Observation;
+
 using namespace std;
 class Npc{
 
   private:
     string name;
     string description;
-    vector<Observation> responses;
+    vector<Observation*> responses;
     Game *game;
 
 

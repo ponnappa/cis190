@@ -1,10 +1,17 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef __PLAYER_H__
+#define __PLAYER_H__
 
 #include<string>
 #include<vector>
-#include "Room.cpp"
-#include "Item.cpp"
+#include "Room.h"
+#include "Item.h"
+#include "Observation.h"
+
+class Room;
+class Item;
+class Observation;
+
+using namespace std;
 
 class Player {
   
@@ -16,11 +23,12 @@ class Player {
   public:
     Player(string _name, Room *_curr);
     string getName();
-    setName(string _name);
+    void setName(string _name);
     Room *getCurrentRoom();
-    setCurrentRoom(Room *r);
-    addItem(Item *i);
-    removeItem(Item *remit);
+    void setCurrentRoom(Room *r);
+    void addItem(Item *i);
+    bool removeItem(Item *remit);
+	vector<Item*> getItems();
 };
     
 #endif // PLAYER_H

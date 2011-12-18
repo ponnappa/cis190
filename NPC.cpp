@@ -1,4 +1,8 @@
-#include "NPC.h"
+#include "Npc.h"
+/*#include <string>
+#include <vector>
+#include "Observation.h"
+#include "Game.h"*/
 using namespace std;
 
 	Npc::Npc(string _name, string _description, Game *_game){
@@ -22,8 +26,9 @@ using namespace std;
             Observation* o = (*it);
             set<int>::iterator it2;
             bool flag = true;
-            for(it2=(*o).getTriggers().begin(); it2<(*o).getTriggers.end(); it2++){
-                if(!(*((*game).getState()+(*it)*sizeof(bool)))){
+			set<int> temp = (*o).getTriggers();
+            for(it2=temp.begin(); it2 != temp.end(); it2++){
+                if(!(*((*game).getState()+(*it2)))){
                     flag = false;
                     break;
                 }

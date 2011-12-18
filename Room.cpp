@@ -1,4 +1,7 @@
 #include "Room.h"
+#include <string>
+#include <vector>
+
 using namespace std;
 
 
@@ -9,7 +12,7 @@ using namespace std;
     }
 	
     
-    
+    /*
     void Room::printDescription(){
         cout << "You are in the " << name <<" " << description << endl;
         cout << "The " << name << " contains the following people:";
@@ -22,19 +25,15 @@ using namespace std;
 		cout<< endl << "and the following things:";
 		vector<Observation*>::iterator it2;
 		for(it2=observations.begin(); it2<observations.end(); it2++){
-			cout<< (*it2).getName(); << " ,";
+			cout<< (*it2).getName() << " ,";
 		}
     
-    }
+    }*/
 
 
     string Room::getName(){
         return name;
     }
-    
-	bool equals(Room *r){
-		return (getName().compare((*r).getName()))==0;
-	}
 
     
     vector<Room*> Room::getExits(){
@@ -121,8 +120,9 @@ using namespace std;
             Observation* o = (*it);
             set<int>::iterator it2;
             bool flag = true;
-            for(it2=(*o).getTriggers().begin(); it2<(*o).getTriggers.end(); it2++){
-                if(!(*((*game).getState()+(*it)*sizeof(bool)))){
+			set<int> temp = (*o).getTriggers();
+            for(it2=temp.begin(); it2!=temp.end(); it2++){
+                if(!(*((*game).getState()+(*it2)*sizeof(bool)))){
                     flag = false;
                     break;
                 }
@@ -157,5 +157,9 @@ using namespace std;
         }
         return false;
     }
+	
+	bool Room::equals(Room *r){
+			return (getName().compare((*r).getName()))==0;
+	}
 
     

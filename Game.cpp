@@ -1,10 +1,11 @@
-//Game class
+#include "Game.h"
 #include <vector>
 #include <string>
 #include <iostream>
 #include <stdlib.h>
-#include "Player.cpp"
-
+/*#include "Observation.h"
+#include "Player.h"
+*/
 using namespace std;
 
 
@@ -31,7 +32,7 @@ Game::Game(){
 
 void Game::updateGame(Observation *o, Player *p){
 	if((*o).hasTake()){
-		(*p).removeItem((*o).getTake());
+		(*p).removeItem((*o).removeTake());
 	}
 	if((*o).hasItem()){
 		(*p).addItem((*o).removeItem());
@@ -145,11 +146,12 @@ void Game::run(){
 	Observation *bob1= new Observation("intro","hi im bob im your roommate i think you're pretty cool",this);
 	Observation *bob2= new Observation("leave me alone","leave me alone",this);
 	
-	(*bob1).addTrigger(1);
-	(*bob1).addChange(0,true);
-	(*bob1).addChange(1,false);
-	
-	(*bob2).addTrigger(0);
+	(*bob1).addTrigger(0);
+	(*bob1).addChange(0,false);
+	(*bob1).addChange(1,true);
+	(*bob2).addTrigger(1);
+	(*bob).addResponse(bob1);
+	(*bob).addResponse(bob2);
 	
 	
 	
@@ -198,9 +200,9 @@ void Game::run(){
 				continue;
 			}
 			
-			Observation o = (*(obs.at(playobs-1)));
+			Observation *o = (obs.at(playobs-1));
 			cout<<(*o).getDescription()<<endl;
-			update_game(o,p);
+			updateGame(o,p);
 			continue;
 		}
 		if(input==3){
@@ -225,23 +227,16 @@ void Game::run(){
 			}
 			Observation *o = (resps.at(respchoose-1));
 			cout<<(*o).getDescription()<<endl;
-			update_game(o,p);
+			updateGame(o,p);
 			continue;
 			
 		}
-		/*if(input==4){
+		if(input==4){
 			cout<<"Player "<<(*p).getName()<<" is in area "<<(*(*p).getCurrentRoom()).getName()<<endl<<endl;
 			continue;
-		}*/
-		if(input==4){
-			(*(*p).getCurrentRoom()).printDescription();
 		}
+		/*if(input==4){
+			(*(*p).getCurrentRoom()).printDescription();
+		}*/
 	}
-}
-
-
-int main(){
-	Game *g = new Game()
-	(*g).run();
-	return 0;
 }
