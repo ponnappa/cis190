@@ -58,10 +58,8 @@ bool * Game::getState(){
     return state;
 }
 
-
-void Game::run(){
-
-    //create rooms
+void Game::setup(){
+	    //create rooms
 	Room *br = new Room("Bedroom", "This is your dorm room. It's rancid.",this);
 	Room *hall = new Room("Hall","Halls are exciting places.",this);
 	Room *quad = new Room("Quad", "What a pretty place the quad is.",this);
@@ -221,6 +219,9 @@ void Game::run(){
     (*troll3).addTrigger(8);
     (*troll3).addChange(9,true);
 	
+	(*troll).addResponse(troll1);
+	(*troll).addResponse(troll2);
+	(*troll).addResponse(troll3);
 	
 	//add Npcs to rooms
 	(*br).addNpc(bob);
@@ -233,11 +234,13 @@ void Game::run(){
 	(*lab).addNpc(student2);
 
     //create the player
-	Player *p = new Player("UnknownName",br);
+	p = new Player("UnknownName",br);
 
 	cout<<"player "<<(*p).getName()<<" in area "<<(*(*p).getCurrentRoom()).getName()<<endl;
-	
-		while(true){
+
+}
+
+void Game::run(){
 		cout<<endl<<"1)Move"<<endl;
 		cout<<"2)Observe area"<<endl;
 		cout<<"3)Talk to people"<<endl;
@@ -252,9 +255,9 @@ void Game::run(){
 			cout<<"type \"back\" to go back"<<endl<<endl;
 			int movein = getUserInput(ex.size());
 			if(movein==-1)
-				continue;
+				return;
 			(*p).setCurrentRoom(ex.at(movein-1));
-			continue;
+			return;
 		}
 		if(input==2){
 			vector<Observation*> obs = (*(*p).getCurrentRoom()).getObservations();
@@ -264,13 +267,13 @@ void Game::run(){
 			cout<<"type \"back\" to go back"<<endl<<endl;
 			int playobs = getUserInput(obs.size());
 			if(playobs==-1){
-				continue;
+				return;
 			}
 			
 			Observation *o = (obs.at(playobs-1));
 			cout<<(*o).getDescription()<<endl;
 			updateGame(o,p);
-			continue;
+			return;
 		}
 		if(input==3){
 			vector<Npc*> npcs = (*(*p).getCurrentRoom()).getNpcs();
@@ -280,7 +283,7 @@ void Game::run(){
 			cout<<"type \"back\" to go back"<<endl<<endl;
 			int npcchoose = getUserInput(npcs.size());
 			if(npcchoose==-1){
-				continue;
+				return;
 			}
 			Npc n = *(npcs.at(npcchoose-1));
 			vector<Observation*> resps = n.getResponses();
@@ -290,20 +293,16 @@ void Game::run(){
 			cout<<"type \"back\" to go back"<<endl<<endl;
 			int respchoose = getUserInput(resps.size());
 			if(respchoose==-1){
-				continue;
+				return;
 			}
 			Observation *o = (resps.at(respchoose-1));
 			cout<<(*o).getDescription()<<endl;
 			updateGame(o,p);
-			continue;
+			return;
 			
 		}
 		if(input==4){
 			cout<<"Player "<<(*p).getName()<<" is in area "<<(*(*p).getCurrentRoom()).getName()<<endl<<endl;
-			continue;
+			return;
 		}
-		/*if(input==4){
-			(*(*p).getCurrentRoom()).printDescription();
-		}*/
 	}
-}

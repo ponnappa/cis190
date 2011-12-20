@@ -11,6 +11,8 @@
 
 int main(){
     Game *g = new Game();
-	(*g).run();
+	(*g).setup();
+	while(true)
+		(*g).run();
 	return 0;
 }
