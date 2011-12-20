@@ -75,7 +75,7 @@ void Game::setup(){
 	(*quad).addExit(lab);
 	(*lab).addExit(hall);
 	
-	//create Items
+	/*create Items
 	Item *computer = new Item("computer");
 	Item *notes = new Item("class notes");
 	
@@ -86,13 +86,20 @@ void Game::setup(){
 	Item *squirrel = new Item("squirrel");
 	
 	Item *printer = new Item("printer");
-	Item *chair = new Item("char");
+	Item *chair = new Item("char");*/
 	
 	//create observations
 	Observation *computer_obs = new Observation("computer","You computer has a blue screen of death",this);
 	Observation *notes_obs = new Observation("class notes","There is mentioning of a project due in CIS190",this);
 	
-	Observation *vending_obs = new Observation("vending machine","A soda would be delicious.",this);
+	Observation *vending_obs1 = new Observation("vending machine","A 75 cent soda would be delicious.",this);
+	(*vending_obs1).addTrigger(11);   //11 - dont have a soda
+
+	Observation *vending_obs2 = new Observation("vending maching","You pay 75 cents for a soda.",this);
+	(*vending_obs2).addTrigger(5); // 5 - have 3 quarters
+	(*vending_obs2).addChange(5,false);
+	(*vending_obs2).addChange(11,true);   
+	
 	Observation *door_obs = new Observation("door to your room", "You notice that while other doors have student name tags, yours does not",this);
 	
 	Observation *knife_obs = new Observation("knife","",this);
@@ -101,7 +108,11 @@ void Game::setup(){
 	Observation *printer_obs = new Observation("printer","out of ink",this);
 	Observation *chair_obs = new Observation("chair","",this);
 	
-	//add items to observations
+	
+	
+	
+	
+	/*add items to observations
 	(*computer_obs).addItem(computer);
 	(*notes_obs).addItem(notes);
 	
@@ -112,7 +123,7 @@ void Game::setup(){
 	(*squirrel_obs).addItem(squirrel);
 	
 	(*printer_obs).addItem(printer);
-	(*chair_obs).addItem(chair);
+	(*chair_obs).addItem(chair);*/
 	
 	//add observations to rooms
 	(*br).addObservation(computer_obs);
@@ -136,6 +147,9 @@ void Game::setup(){
 	Npc *itaman = new Npc("ITA Manager", "The ITA manager is playing Starcraft.",this);
 	Npc *student1 = new Npc("Student1", "This student is working at a computer.",this);
 	Npc *student2 = new Npc("Student2", "This student is working at a computer.",this);
+	
+	
+	
 	
 	//create "observations" that are npc dialogue
 	
@@ -239,6 +253,10 @@ void Game::setup(){
 	cout<<"player "<<(*p).getName()<<" in area "<<(*(*p).getCurrentRoom()).getName()<<endl;
 
 }
+
+
+
+
 
 void Game::run(){
 		cout<<endl<<"1)Move"<<endl;
