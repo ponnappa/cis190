@@ -159,11 +159,11 @@ void Game::run(){
 	
 	    //nursing student
 	Observation *nurse1 = new Observation("hey","la dee dah dee dah nothing to see here",this);
-	(*nurse).addRespoinse(nurse1);
+	(*nurse).addResponse(nurse1);
 	
 	    //random student
 	Observation *wharton1 = new Observation("hey","herp derp finance accounting herp derp",this);
-	(*wharton).addRespoinse(wharton1):
+	(*wharton).addResponse(wharton1);
 	
 	
     ///////////////Zach Zarrow
@@ -183,11 +183,11 @@ void Game::run(){
 	(*zach3).addChange(4,true);
 	
 	Observation *zach4 = new Observation ("dance for Zach", "You're pathetic. Here's your money",this);
-	(zach4).addTrigger(4);
-	(zach4).addChange(5,true);
+	(*zach4).addTrigger(4);
+	(*zach4).addChange(5,true);
 	
 	Observation *zach5 = new Observation("hey", "Good luck figuring out your name. Remember I can always tell you your last name.",this);
-	(zach5).addTrigger(5);
+	(*zach5).addTrigger(5);
 	
 	(*zach).addResponse(zach1);
 	(*zach).addResponse(zach2);	
@@ -219,7 +219,7 @@ void Game::run(){
     Observation *troll3 = new Observation("what's my name?","Your name is Jinesh Desai",this);
     (*troll3).addTrigger(7);
     (*troll3).addTrigger(8);
-    (*troll3).addChange(9);
+    (*troll3).addChange(9,true);
 	
 	
 	//add Npcs to rooms
