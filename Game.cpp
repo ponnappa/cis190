@@ -11,10 +11,6 @@ using namespace std;
 
 //constructor
 Game::Game(){
-    state[0]=true;  //bob is happy
-    state[1]=false; //have talked to bob
-    
-    
     
     /*state[1]=false; // 1 talked to Zach Zarrow once
     state[2]=false; // 2 have danced for Zach Zarrow
@@ -65,6 +61,7 @@ bool * Game::getState(){
 
 void Game::run(){
 
+    //create rooms
 	Room *br = new Room("Bedroom", "This is your dorm room. It's rancid.",this);
 	Room *hall = new Room("Hall","Halls are exciting places.",this);
 	Room *quad = new Room("Quad", "What a pretty place the quad is.",this);
@@ -143,16 +140,86 @@ void Game::run(){
 	Npc *student2 = new Npc("Student2", "This student is working at a computer.",this);
 	
 	//create "observations" that are npc dialogue
-	Observation *bob1= new Observation("intro","hi im bob im your roommate i think you're pretty cool",this);
-	Observation *bob2= new Observation("leave me alone","leave me alone",this);
 	
-	(*bob1).addTrigger(0);
+    ////////////bob
+	state[0]=true;  //bob is happy
+    state[1]=false; //have talked to bob
+    
+	Observation *bob1= new Observation("hey","hi im bob im your roommate i think you're pretty cool",this);
+    (*bob1).addTrigger(0);
 	(*bob1).addChange(0,false);
 	(*bob1).addChange(1,true);
+	
+	Observation *bob2= new Observation("hey","leave me alone",this);
 	(*bob2).addTrigger(1);
+	
+	
 	(*bob).addResponse(bob1);
 	(*bob).addResponse(bob2);
 	
+	    //nursing student
+	Observation *nurse1 = new Observation("hey","la dee dah dee dah nothing to see here",this);
+	(*nurse).addRespoinse(nurse1);
+	
+	    //random student
+	Observation *wharton1 = new Observation("hey","herp derp finance accounting herp derp",this);
+	(*wharton).addRespoinse(wharton1):
+	
+	
+    ///////////////Zach Zarrow
+	state[2]=true; //have not talked to Zach
+	state[3]=false; //know you need money
+	state[4]=false; //know zach will give you money
+	state[5]=false; //have 3 quarters
+	
+	Observation *zach1 = new Observation ("hey", "Hi, I'm Zach Zarrow. You look familiar. I think you're in my class.",this);
+	(*zach1).addTrigger(2);
+	(*zach1).addChange(2,false);
+	
+	Observation *zach2 = new Observation ("ask about name", "I could probably tell your first name if you can tell me your last name.",this);
+	
+	Observation *zach3 = new Observation ("ask about money", "I'll give you 75 cents if you dance for me.",this);
+	(*zach3).addTrigger(3);
+	(*zach3).addChange(4,true);
+	
+	Observation *zach4 = new Observation ("dance for Zach", "You're pathetic. Here's your money",this);
+	(zach4).addTrigger(4);
+	(zach4).addChange(5,true);
+	
+	Observation *zach5 = new Observation("hey", "Good luck figuring out your name. Remember I can always tell you your last name.",this);
+	(zach5).addTrigger(5);
+	
+	(*zach).addResponse(zach1);
+	(*zach).addResponse(zach2);	
+	(*zach).addResponse(zach3);
+	(*zach).addResponse(zach4);
+	(*zach).addResponse(zach5);
+	
+	
+    /////////////////////Troll
+    state[6]=true; //have not talked to the troll
+    state[7]=false; //have 4 dollars
+    state[8]=false; //have a soda
+    state[9]=false; //know your name
+    state[10]=true; //dont have 4 dollars
+    state[11]=true; //dont have a soda
+    state[12]=true; //dont have 4 dollars and a soda
+    
+    
+    Observation *troll1 = new Observation("hey","Hi, I'm LaPlace's Demon. I can tell you your name if you do me a small favor.\nBring me 4 dollar and a can of soda and I'll tell you your name.",this);
+    (*troll1).addTrigger(6);
+    (*troll1).addChange(6,false);
+    (*troll1).addChange(3,true);
+    
+    
+    Observation *troll2 = new Observation("what's my name?","You need to fetch me the money and the soda before I reveal this.",this);
+    (*troll2).addTrigger(12);
+    
+    
+    Observation *troll3 = new Observation("what's my name?","Your name is Jinesh Desai",this);
+    (*troll3).addTrigger(7);
+    (*troll3).addTrigger(8);
+    (*troll3).addChange(9);
 	
 	
 	//add Npcs to rooms
@@ -171,7 +238,7 @@ void Game::run(){
 	cout<<"player "<<(*p).getName()<<" in area "<<(*(*p).getCurrentRoom()).getName()<<endl;
 	
 		while(true){
-		cout<<"1)Move"<<endl;
+		cout<<endl<<"1)Move"<<endl;
 		cout<<"2)Observe area"<<endl;
 		cout<<"3)Talk to people"<<endl;
 		//cout<<"4)Look at journal"<<endl;
