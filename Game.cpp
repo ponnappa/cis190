@@ -100,7 +100,7 @@ void Game::setup(){
 	(*vending_obs1a).addTrigger(8,true);   //8 - have a soda
 
 
-	Observation *vending_obs2 = new Observation("vending maching","You pay 75 cents for a soda.",this);
+	Observation *vending_obs2 = new Observation("vending machine","You pay 75 cents for a soda.",this);
 	(*vending_obs2).addTrigger(8,false);
 	(*vending_obs2).addTrigger(5, true); // 5 - have 3 quarters
 	(*vending_obs2).addTrigger(7,false);//7 - have 4 dollars
