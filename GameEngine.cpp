@@ -12,7 +12,9 @@
 int main(){
     Game *g = new Game();
 	(*g).setup();
-	while(true)
+	while(*((*g).getState()+9)==false){
 		(*g).run();
+	}
+	cout<<"You figured out your name! You win!"<<endl;
 	return 0;
 }

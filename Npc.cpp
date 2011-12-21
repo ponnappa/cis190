@@ -1,6 +1,7 @@
 #include "Npc.h"
 /*#include <string>
 #include <vector>
+#include <map>
 #include "Observation.h"
 #include "Game.h"*/
 using namespace std;
@@ -24,11 +25,11 @@ using namespace std;
         vector<Observation*>::iterator it;
         for(it=responses.begin(); it<responses.end(); it++){
             Observation* o = (*it);
-            set<int>::iterator it2;
+            map<int,bool>::iterator it2;
             bool flag = true;
-			set<int> temp = (*o).getTriggers();
+			map<int,bool> temp = (*o).getTriggers();
             for(it2=temp.begin(); it2 != temp.end(); it2++){
-                if(!(*((*game).getState()+(*it2)))){
+                if((*((*game).getState()+(*it2).first))!=(*it2).second){
                     flag = false;
                     break;
                 }

@@ -3,7 +3,6 @@
 
 #include <string>
 #include <vector>
-#include <set>
 #include <map>
 #include "Item.h"
 #include "Game.h"
@@ -20,7 +19,7 @@ private:
 	string description;
 	Item *item;
 	Item *take;
-	set<int> triggers;
+	map<int,bool> triggers;
 	map<int,bool> changes;
 	Game *game;
 public:
@@ -33,8 +32,8 @@ public:
 	Item* removeItem();
 	bool hasTake();
 	Item* removeTake();
-	void addTrigger(int i);
-	set<int> getTriggers();
+	void addTrigger(int i, bool b);
+	map<int,bool> getTriggers();
 	void addChange(int i, bool b);
 	map<int,bool> getChanges();
 };

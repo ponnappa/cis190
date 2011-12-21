@@ -2,6 +2,7 @@
 #define __NPC_HEADER__
 #include <string>
 #include <vector>
+#include <map>
 #include "Observation.h"
 #include "Game.h"
 

@@ -1,7 +1,6 @@
 #include "Observation.h"
 #include <string>
 #include <vector>
-#include <set>
 #include <map>
 /*#include "Item.h"
 #include "Game.h"*/
@@ -15,7 +14,7 @@ Observation::Observation(string _name, string _description, Game *_game){
 }
 
 bool Observation::equals(Observation *o){
-    return (getName().compare((*o).getName()))==0;
+    return (getDescription().compare((*o).getDescription())==0);
 }
 
 string Observation::getName(){
@@ -49,11 +48,11 @@ Item* Observation::removeItem(){
     return temp;
 }
 
-void Observation::addTrigger(int i){
-    triggers.insert(i);
+void Observation::addTrigger(int i, bool b){
+    triggers[i]=b;
 }
 
-set<int> Observation::getTriggers(){
+map<int,bool> Observation::getTriggers(){
     return triggers;
 }
 
