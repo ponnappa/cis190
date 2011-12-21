@@ -1,28 +1,51 @@
+# Here is an example of a Makefile that uses variables to define everything.
+# This provides a layer of abstraction, and is helpful if you ever want to
+# change names of files, compilers, flags, etc. You only have to change them
+# once.
 
+CC                   = g++
+FLAGS                = -Wall -g -c -O2 #is one of gcc's optimization flags
 
+all: Item.o Observation.o Npc.o Player.o Room.o Game.o GameEngine.o MysteryGame
 
-all : game game_engine item npc observation player room
+Item.o: Item.cpp
+	$(CC) $(FLAGS) -o Item.o Item.cpp
 
-game : Game.cpp
-	g++ -Wall -g -O2 -o game Game.cpp
+Observation.o: Observation.cpp
+	$(CC) $(FLAGS) -o Observation.o Observation.cpp
 
-game_engine : GameEngine.cpp
-	g++ -Wall -g -O2 -o game_engine GameEngine.cpp
+Observation.o: Observation.h Item.h Game.h
 
-item: Item.cpp
-	g++ -Wall -g -O2 -o item Item.cpp
+Npc.o: Npc.cpp
+	$(CC) $(FLAGS) -o Npc.o Npc.cpp
 
-npc : Npc.cpp
-	g++ -Wall -g -O2 -o npc Npc.cpp
+Npc.o: Npc.h Observation.h Game.h
 
-observation : Observation.cpp
-	g++ -Wall -g -O2 -o observation Observation.cpp
+Player.o: Player.cpp
+	$(CC) $(FLAGS) -o Player.o Player.cpp
 
-player : Player.cpp
-	g++ -Wall -g -O2 -o player Player.cpp
+Player.o: Player.h Room.h Item.h Observation.h
 
-room : Room.cpp
-	g++ -Wall -g -O2 -o room Room.cpp
+Room.o: Room.cpp 
+	$(CC) $(FLAGS) -o Room.o Room.cpp
 
-clean :
-	rm -f game game_engine item npc observation player room
+Room.o: Room.h Npc.h Item.h Observation.h Game.h
+
+Game.o: Game.cpp
+	$(CC) $(FLAGS) -o Game.o Game.cpp
+
+Game.o: Game.h Player.h Observation.h
+
+GameEngine.o: GameEngine.cpp
+	$(CC) $(FLAGS) -o GameEngine.o GameEngine.cpp
+
+GameEngine.o: Game.h Player.h Observation.h Room.h Npc.h Item.h
+
+MysteryGame: GameEngine.o Game.o Room.o Player.o Npc.o Observation.o Item.o	
+	$(CC) -Wall -g -o MysteryGame GameEngine.o Game.o Room.o Player.o Npc.o Observation.o Item.o
+
+clean:
+	rm -f Game.o GameEngine.o Item.o Npc.o Observation.o Player.o Room.o 
+	
+cleanest: clean
+	rm -f MysteryGame

@@ -94,6 +94,7 @@ void Game::setup(){
 	
 	Observation *vending_obs1 = new Observation("vending machine","A 75 cent soda would be delicious.",this);
 	(*vending_obs1).addTrigger(8,false);   //8 - have a soda
+	(*vending_obs1).addTrigger(5, false); // 5 - have 3 quarters
 	(*vending_obs1).addChange(3,true);
 	
 	Observation *vending_obs1a = new Observation("vending machine","Your thirst has been quenched.",this);
