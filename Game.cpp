@@ -96,19 +96,19 @@ void Game::setup(){
 	(*vending_obs1).addTrigger(8,false);   //8 - have a soda
 	(*vending_obs1).addChange(3,true);
 	
-	Observation *vending_obs1 = new Observation("vending machine","Your thirst has been quenched.",this);
-	(*vending_obs1).addTrigger(8,true);   //8 - have a soda
+	Observation *vending_obs1a = new Observation("vending machine","Your thirst has been quenched.",this);
+	(*vending_obs1a).addTrigger(8,true);   //8 - have a soda
 
 
 	Observation *vending_obs2 = new Observation("vending maching","You pay 75 cents for a soda.",this);
-	(*vending_obs1).addTrigger(8,false);
+	(*vending_obs2).addTrigger(8,false);
 	(*vending_obs2).addTrigger(5, true); // 5 - have 3 quarters
 	(*vending_obs2).addTrigger(7,false);//7 - have 4 dollars
 	(*vending_obs2).addChange(5,false);
 	(*vending_obs2).addChange(8,true); //8- haev soda
 	
 	Observation *vending_obs3 = new Observation("vending maching","You pay 75 cents for a soda.",this);
-	(*vending_obs1).addTrigger(8,false);
+	(*vending_obs3).addTrigger(8,false);
 	(*vending_obs3).addTrigger(5,true); // 5 - have 3 quarters
 	(*vending_obs3).addTrigger(7,true);//7 - have 4 dollars
 	(*vending_obs3).addChange(5,false);
@@ -144,6 +144,7 @@ void Game::setup(){
 	(*br).addObservation(computer_obs);
 	(*br).addObservation(notes_obs);
 	(*hall).addObservation(vending_obs1);
+	(*hall).addObservation(vending_obs1a);
 	(*hall).addObservation(vending_obs2);
 	(*hall).addObservation(vending_obs3);
 	(*hall).addObservation(door_obs);
@@ -210,7 +211,7 @@ void Game::setup(){
 	
 	Observation *zach3 = new Observation ("Ask about money", "I'll give you 75 cents if you dance for me.",this);
 	(*zach3).addTrigger(3,true);
-	(*zach4).addTrigger(4,false);
+	(*zach3).addTrigger(4,false);
 	(*zach3).addChange(1,true);
 	
 	Observation *zach4 = new Observation ("Dance for Zach", "You're pathetic. Here's your money",this);
